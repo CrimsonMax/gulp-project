@@ -1,0 +1,25 @@
+body {
+  background-color: black;
+
+  span {
+    color: red;
+  }
+
+  background: url("@img/bee.jpg") 0 0 repeat;
+}
+
+@media (max-width: 768px) {
+  span {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-weight: 900;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-color: green;
+  }
+}
