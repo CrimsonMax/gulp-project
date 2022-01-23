@@ -1,5 +1,5 @@
 body {
-  background: url("../img/bee.jpg") 0 0 repeat;
+  background-color: black;
 }
 
 body span {
@@ -14,23 +14,14 @@ body header {
   span {
     font-size: 20px;
   }
-
   h1 {
     font-weight: 900;
   }
+}
 
+@media (max-width: 768px) {
   body {
     background-color: green;
   }
 }
-@supports (-webkit-appearance:none){
-body{background:url("../img/bee.jpg") 0 0 repeat}
-}
-
- @media (max-width: 768px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
+/*# sourceMappingURL=style.css.map */

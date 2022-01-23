@@ -1,7 +1,8 @@
 import replace from "gulp-replace" // Поиск и замена
 import plumber from "gulp-plumber" // Обработка ошибок
 import notify from "gulp-notify" // Сообщения (подсказки)
-import browserSync from "browser-sync"
+import browserSync from "browser-sync" // Локальный сервер
+import newer from "gulp-newer"
 
 // Экспортируем объект
-export const plugins = { replace, plumber, notify, browserSync }
+export const plugins = { replace, plumber, notify, browserSync, newer }

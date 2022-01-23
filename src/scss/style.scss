@@ -1,11 +1,15 @@
 body {
-  background-color: black;
+  // background-color: black;
 
   span {
     color: red;
   }
 
   background: url("@img/bee.jpg") 0 0 repeat;
+
+  header {
+    color: blanchedalmond;
+  }
 }
 
 @media (max-width: 768px) {
