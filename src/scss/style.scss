@@ -1,11 +1,13 @@
+@import 'fonts';
+
 body {
-  // background-color: black;
+  background-color: black;
 
   span {
     color: red;
   }
 
-  background: url("@img/bee.jpg") 0 0 repeat;
+  // background: url("@img/bee.jpg") 0 0 no-repeat;
 
   header {
     color: blanchedalmond;

@@ -1,5 +1,5 @@
 body {
-  background: url("../img/bee.jpg") 0 0 repeat;
+  background-color: black;
 }
 
 body span {
@@ -24,7 +24,7 @@ body header {
   }
 }
 @supports (-webkit-appearance:none){
-body{background:url("../img/bee.jpg") 0 0 repeat}
+
 }
 
  @media (max-width: 768px){
