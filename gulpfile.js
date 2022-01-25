@@ -14,17 +14,25 @@ import { js } from './gulp/tasks/js.js'
 import { images } from './gulp/tasks/images.js'
 import { otfToTtf, ttfToWoff, fontsStyle } from './gulp/tasks/fonts.js'
 import { svgSprite } from './gulp/tasks/svgSprite.js'
+import { zip } from './gulp/tasks/zip.js'
+import { ftp } from './gulp/tasks/ftp.js'
 
 // Передаём значения в глобальную переменную
-global.app = { path, gulp, plugins }
+global.app = {
+  isBuild: process.argv.includes('--build'),
+  isDev: !process.argv.includes('--build'),
+  path,
+  gulp,
+  plugins
+}
 
 // Наблюдатель за изменениями в файлах
 function watcher() {
   gulp.watch(path.watch.files, copy)
-  gulp.watch(path.watch.html, html)
-  gulp.watch(path.watch.scss, scss)
-  gulp.watch(path.watch.js, js)
-  gulp.watch(path.watch.images, images)
+  gulp.watch(path.watch.html, html) // gulp.series(html, ftp) - для автоматического обновления фалов на сервере
+  gulp.watch(path.watch.scss, scss) // gulp.series(scss, ftp) - для автоматического обновления фалов на сервере
+  gulp.watch(path.watch.js, js) // gulp.series(js, ftp) - для автоматического обновления фалов на сервере
+  gulp.watch(path.watch.images, images) // gulp.series(images, ftp) - для автоматического обновления фалов на сервере
 }
 
 export { svgSprite }
@@ -38,6 +46,15 @@ const serverWatch = gulp.parallel(watcher, server)
 
 // Построение сценариев выполнения задач
 const dev = gulp.series(reset, mainTasks, serverWatch)
+const build = gulp.series(reset, mainTasks)
+const deployZip = gulp.series(reset, mainTasks, zip)
+const deployFtp = gulp.series(reset, mainTasks, ftp)
+
+// Экспорт сценариев
+export { dev }
+export { build }
+export { deployZip }
+export { deployFtp }
 
 // Выполнение сценария по-умолчанию
 gulp.task('default', dev)
